@@ -1,0 +1,3 @@
+[submodule "ThirdParty/tl-parser"]
+	path = ThirdParty/tl-parser
+	url = https://github.com/vysheng-telegram-cli/tl-parser.git
