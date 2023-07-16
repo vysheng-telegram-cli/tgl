@@ -90,7 +90,7 @@ foreach(GENERATE_COMMAND GENERATE_OUTPUT IN ZIP_LISTS GENERATE_COMMANDS GENERATE
 	set_source_files_properties(${GENERATE_OUTPUT} PROPERTIES GENERATED TRUE)
 endforeach()
 
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} STATIC
 	src/mtproto-common.c
 	src/mtproto-client.c
 	src/mtproto-key.c
@@ -108,5 +108,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/i
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/tl-parser/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_crypto)
 
