@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.17 FATAL_ERROR)
 
 project(tgl C)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+find_package(Libevent REQUIRED)
+
 add_subdirectory(ThirdParty/crypto)
 add_subdirectory(ThirdParty/tl-parser)
 
@@ -112,6 +116,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/in
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/tl-parser/include)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${LIBEVENT_INCLUDE_DIRS})
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
-target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_crypto)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_crypto ${LIBEVENT_LIBRARIES})
 
