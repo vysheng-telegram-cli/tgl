@@ -9,6 +9,7 @@ add_executable(${PROJECT_NAME}_generate
 	src/generate.c
 	src/tools.c)
 target_include_directories(${PROJECT_NAME}_generate PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME}_generate PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/tgl)
 target_include_directories(${PROJECT_NAME}_generate PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/crypto/include)
 target_include_directories(${PROJECT_NAME}_generate PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/tl-parser/include)
 target_link_libraries(${PROJECT_NAME}_generate ${PROJECT_NAME}_crypto)
@@ -98,16 +99,19 @@ add_library(${PROJECT_NAME} STATIC
 	src/structures.c
 	src/binlog.c
 	src/tgl.c
+	src/tgl-net.c
+	src/tgl-timers.c
 	src/updates.c
 	src/tg-mime-types.c
 	src/mtproto-utils.c 
 	src/tools.c
 	${CMAKE_CURRENT_BINARY_DIR}/auto/constants.h
 	${GENERATE_OUTPUTS})
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/tgl)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty/tl-parser/include)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_crypto)
 
