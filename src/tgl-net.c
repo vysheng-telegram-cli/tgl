@@ -38,12 +38,7 @@
 #include <poll.h>
 #include "crypto/rand.h"
 #include <arpa/inet.h>
-#ifdef EVENT_V2
 #include <event2/event.h>
-#else
-#include <event.h>
-#include "event-old.h"
-#endif
 #include <sys/time.h>
 #include <time.h>
 
@@ -497,10 +492,6 @@ static void try_read (struct connection *c) {
   if (!c->in_tail) {
     c->in_head = c->in_tail = new_connection_buffer (1 << 20);
   }
-  #ifdef EVENT_V1
-    struct timeval tv = {5, 0};
-    event_add (c->read_ev, &tv);
-  #endif
   int x = 0;
   while (1) {
     int r = read (c->fd, c->in_tail->wptr, c->in_tail->end - c->in_tail->wptr);
