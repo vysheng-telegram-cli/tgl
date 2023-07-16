@@ -24,8 +24,6 @@
 
 #include <openssl/err.h>
 
-#include "../tgl.h"
-#include "../tgl-inner.h"
 #include "err.h"
 
 void TGLC_err_print_errors_fp (FILE *fp) {

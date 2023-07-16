@@ -6,13 +6,6 @@ This is library that handles Telegram API and protocol.
 
 If you're looking for client CLI implementation, check [TG repository](https://github.com/vysheng/tg) instead. 
 
-Build status:
-
-| Repository                                             | Status|
-| ------------------------------------------------------ | ----- |
-| [vysheng](https://github.com/vysheng/tgl) (main)       | [![Build Status](https://travis-ci.org/vysheng/tgl.svg)](https://travis-ci.org/vysheng/tgl) |
-| [kenorb-contrib](https://github.com/kenorb-contrib/tgl) | [![Build Status](https://travis-ci.org/kenorb-contrib/tgl.svg)](https://travis-ci.org/kenorb-contrib/tgl) |
-
 Current versions:
 
 - `scheme.tl`: Layer 38
